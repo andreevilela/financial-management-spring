@@ -3,6 +3,10 @@ package com.iftm.course.dto;
 import java.io.Serializable;
 import java.sql.Date;
 
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.iftm.course.entities.Category;
 import com.iftm.course.entities.Input;
@@ -13,11 +17,18 @@ public class InputDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
+	
+	@NotEmpty(message = "can't be empty")
+	@Length(min = 3, max = 30, message = "Length must be between 3 and 30")
 	private String descricao;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "America/Sao_Paulo")
+	@NotEmpty(message = "can't be empty")
 	private Date data;
+	
+	@NotEmpty(message = "can't be empty")
 	private double valor;
+	
 	private Long userId;
 	private String userName;
 	private Date userData_nascimento;

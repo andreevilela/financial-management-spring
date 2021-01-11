@@ -2,6 +2,10 @@ package com.iftm.course.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
 import com.iftm.course.entities.CategoryOut;
 
 public class CategoryOutDTO implements Serializable {
@@ -9,6 +13,9 @@ public class CategoryOutDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
+	
+	@NotEmpty(message = "can't be empty")
+	@Length(min = 4, max = 40, message = "Length must be between 4 and 40")
 	private String name;
 	
 	public CategoryOutDTO() {

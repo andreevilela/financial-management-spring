@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.sql.Date;
 
 import com.iftm.course.entities.User;
+import com.iftm.course.services.exceptions.validation.UserUpdateValid;
 
+@UserUpdateValid
 public class UserDTO implements Serializable {
 	
 	private static final long serialVersionUID = 1L;

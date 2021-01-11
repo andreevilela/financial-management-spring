@@ -10,7 +10,9 @@ import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.iftm.course.entities.User;
+import com.iftm.course.services.exceptions.validation.UserInsertValid;
 
+@UserInsertValid
 public class UserInsertDTO implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -22,6 +24,7 @@ public class UserInsertDTO implements Serializable {
 	private String name;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "America/Sao_Paulo")
+	@NotEmpty(message = "can't be empty")
 	private Date data_nascimento;
 	
 	@NotEmpty(message = "can't be empty")
