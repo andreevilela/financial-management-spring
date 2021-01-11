@@ -1,12 +1,12 @@
 package com.iftm.course.services;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,10 +22,15 @@ public class InputService {
 	@Autowired
 	private InputRepository repository;
 	
-	public List<InputDTO> findAll() {
+	public Page<InputDTO> findAllPaged(Pageable pageable) {
+		Page<Input> List = repository.findAll(pageable);
+		return List.map(e -> new InputDTO(e));		
+	}
+	
+	/*public List<InputDTO> findAll() {
 		List<Input> List = repository.findAll();
 		return List.stream().map(e -> new InputDTO(e)).collect(Collectors.toList());		
-	}
+	}*/
 	
 	public InputDTO findById(Long id) {
 		Optional<Input> obj = repository.findById(id);
