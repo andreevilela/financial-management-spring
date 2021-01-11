@@ -3,6 +3,7 @@ package com.iftm.course.dto;
 import java.io.Serializable;
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.iftm.course.entities.User;
 import com.iftm.course.services.exceptions.validation.UserUpdateValid;
 
@@ -13,6 +14,8 @@ public class UserDTO implements Serializable {
 	
 	private Long id;
 	private String name;
+	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "America/Sao_Paulo")
 	private Date data_nascimento;
 	private String email;
 	

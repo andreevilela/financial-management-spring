@@ -23,7 +23,6 @@ public class OutputDTO implements Serializable {
 	private String descricao;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "America/Sao_Paulo")
-	@NotEmpty(message = "can't be empty")
 	private Date data;
 	
 	@NotEmpty(message = "can't be empty")
